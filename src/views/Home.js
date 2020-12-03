@@ -8,7 +8,6 @@ import {
   Modal,
   Divider,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import {
   useStyles,
   CardTemplate,
@@ -84,14 +83,7 @@ const Boards = [
 ];
 
 const Boards2 = [];
-const body = (
-  <div>
-    <h2 id="simple-modal-title">Text in a modal</h2>
-    <p id="simple-modal-description">
-      Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-    </p>
-  </div>
-);
+
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
   const classes = useStyles();

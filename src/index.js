@@ -4,11 +4,7 @@ import "./index.scss";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./routes";
-import {
-  createMuiTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { blue, pink } from "@material-ui/core/colors/";
 
 const theme = createMuiTheme({
