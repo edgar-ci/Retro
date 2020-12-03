@@ -42,7 +42,7 @@ const Login = () => {
         <Grid container justify="center" spacing={2}>
           <Link as></Link>
           <Link
-            to="/Home"
+            to="/home"
             component={Button}
             variant="contained"
             color="primary"

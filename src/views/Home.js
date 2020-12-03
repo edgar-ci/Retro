@@ -1,66 +1,8 @@
 import React, { useState } from "react";
-import {
-  Grid,
-  Typography,
-  Button,
-  Paper,
-  Container,
-  Modal,
-  Divider,
-} from "@material-ui/core";
-import {
-  useStyles,
-  CardTemplate,
-  CardTemplateFooter,
-  CardTemplateFooterCaption,
-  CardTemplateFooterActions,
-  CardTemplateBg,
-} from "./Home.styles";
-import VisibilityIcon from "@material-ui/icons/Visibility";
+import { Grid, Typography, Button, Paper, Container } from "@material-ui/core";
+import ModalNewBoard from "../components/Home/ModalNewBoard";
+import { makeStyles } from "@material-ui/core";
 
-const templates = [
-  {
-    title: "Went Well - To Improve - Action Items",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Start Stop Continue Retrospective",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Sailboat Retrospective",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Liked, Learned, Lacked, & Longed For",
-    description: "is defined but never top was clearde",
-  },
-  { title: "Original 4", description: "is defined but never top was clearde" },
-  {
-    title: "Thumbs up, Thumbs down, new ideas and recognition",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Happy - Meh - Sad",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Speed Car Retrospective",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Retro Básica",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "KALM Retrospective",
-    description: "is defined but never top was clearde",
-  },
-  {
-    title: "Love - Want - Hate - Learn",
-    description: "is defined but never top was clearde",
-  },
-];
 const Boards = [
   {
     title: "Start Stop Continue",
@@ -83,6 +25,36 @@ const Boards = [
 ];
 
 const Boards2 = [];
+
+const useStyles = makeStyles((theme) => ({
+  card: {
+    height: "100%",
+    padding: "15px 10px",
+  },
+  title: {
+    lineHeight: 1,
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+  },
+  container: {
+    height: 450,
+  },
+  containerFull: {
+    height: "calc(100vh - 55px)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    border: "3px dashed #ddd",
+    marginTop: "25px",
+    borderRadius: "10px",
+  },
+  empty: {
+    width: "300px",
+    marginTop: "25px",
+    height: "200px",
+  },
+}));
 
 const Home = () => {
   const [showModal, setShowModal] = useState(false);
@@ -133,92 +105,10 @@ const Home = () => {
           ))
         )}
       </Grid>
-      <Modal
-        open={showModal}
+      <ModalNewBoard
+        showModal={showModal}
         onClose={() => setShowModal(false)}
-        aria-labelledby="simple-modal-title"
-        aria-describedby="simple-modal-description"
-        className={classes.modal}
-      >
-        <div className={classes.paper}>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
-          >
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              className={classes.title}
-            >
-              Templates
-            </Typography>
-            <div className={classes.headerButtons}>
-              <Button
-                color="secondary"
-                variant="text"
-                onClick={() => setShowModal(false)}
-              >
-                Cancelar
-              </Button>
-              <Button color="primary" variant="contained">
-                Nuevo
-              </Button>
-            </div>
-          </Grid>
-          <br />
-          <Divider variant="middle" />
-          <br />
-
-          <Grid container spacing={2}>
-            {templates.map((template, index) => (
-              <Grid xs={4} item key={index.toString()}>
-                <CardTemplate
-                  style={{
-                    backgroundImage: `url(https://picsum.photos/${
-                      400 + index
-                    }/200)`,
-                  }}
-                >
-                  <CardTemplateBg />
-                  <CardTemplateFooter>
-                    <CardTemplateFooterCaption>
-                      <Typography
-                        variant="subtitle2"
-                        gutterBottom
-                        className={classes.title}
-                      >
-                        {template.title}
-                      </Typography>
-                      <Typography
-                        variant="caption"
-                        display="block"
-                        gutterBottom
-                      >
-                        {template.description}
-                      </Typography>
-                    </CardTemplateFooterCaption>
-                    <CardTemplateFooterActions>
-                      <Button
-                        color="primary"
-                        variant="outlined"
-                        size="small"
-                        startIcon={<VisibilityIcon />}
-                      >
-                        Vista previa
-                      </Button>
-                      <Button color="primary" variant="contained" size="small">
-                        Seleccionar
-                      </Button>
-                    </CardTemplateFooterActions>
-                  </CardTemplateFooter>
-                </CardTemplate>
-              </Grid>
-            ))}
-          </Grid>
-        </div>
-      </Modal>
+      />
     </Container>
   );
 };
